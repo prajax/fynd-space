@@ -1,0 +1,104 @@
+{
+    "caseSensitive": false,
+    "properties": {
+        "name": "main",
+        "environment": {
+            "type": "cyno-python"
+        },
+        "icon": "cog"
+    },
+    "inports": {},
+    "outports": {},
+    "groups": [],
+    "processes": {
+        "hello_world/LineToWords_blsqn": {
+            "component": "hello_world/LineToWords",
+            "metadata": {
+                "label": "LineToWords",
+                "x": -144,
+                "y": 72,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "hello_world/Output_fvx1o": {
+            "component": "hello_world/Output",
+            "metadata": {
+                "label": "Output",
+                "x": 432,
+                "y": -36,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "hello_world/StartsWith_42ebl": {
+            "component": "hello_world/StartsWith",
+            "metadata": {
+                "label": "StartsWith",
+                "x": 72,
+                "y": 0,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "hello_world/WordsToLine_d2rv9": {
+            "component": "hello_world/WordsToLine",
+            "metadata": {
+                "label": "WordsToLine",
+                "x": 288,
+                "y": 144,
+                "width": 72,
+                "height": 72
+            }
+        }
+    },
+    "connections": [
+        {
+            "src": {
+                "process": "hello_world/LineToWords_blsqn",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "hello_world/StartsWith_42ebl",
+                "port": "in"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "hello_world/StartsWith_42ebl",
+                "port": "rej"
+            },
+            "tgt": {
+                "process": "hello_world/WordsToLine_d2rv9",
+                "port": "in"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "hello_world/WordsToLine_d2rv9",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "hello_world/Output_fvx1o",
+                "port": "in"
+            },
+            "metadata": {}
+        },
+        {
+            "data": "HeLLo Goodbye World",
+            "tgt": {
+                "process": "hello_world/LineToWords_blsqn",
+                "port": "in"
+            }
+        },
+        {
+            "data": "G",
+            "tgt": {
+                "process": "hello_world/StartsWith_42ebl",
+                "port": "in"
+            }
+        }
+    ]
+}
